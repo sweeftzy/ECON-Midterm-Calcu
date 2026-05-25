@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ECON Midterm Calc</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f4f4f4;
+      margin: 0;
+      padding: 20px;
+    }
+
+    .container {
+      max-width: 800px;
+      margin: auto;
+      background: white;
+      padding: 25px;
+      border-radius: 12px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    }
+
+    h1 {
+      text-align: center;
+      margin-bottom: 25px;
+    }
+
+    h2 {
+      margin-top: 25px;
+      border-bottom: 2px solid #ddd;
+      padding-bottom: 5px;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+      gap: 12px;
+    }
+
+    label {
+      display: flex;
+      flex-direction: column;
+      font-size: 14px;
+      font-weight: bold;
+    }
+
+    input {
+      padding: 8px;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+      margin-top: 5px;
+    }
+
+    button {
+      width: 100%;
+      margin-top: 25px;
+      padding: 12px;
+      border: none;
+      border-radius: 8px;
+      background: #2563eb;
+      color: white;
+      font-size: 16px;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background: #1d4ed8;
+    }
+
+    .results {
+      margin-top: 30px;
+      background: #f9fafb;
+      padding: 20px;
+      border-radius: 10px;
+    }
+
+    .results p {
+      margin: 10px 0;
+      font-size: 16px;
+    }
+
+    .final {
+      font-size: 22px;
+      font-weight: bold;
+      color: #111827;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>ECON Midterm Calc</h1>
+
+    <h2>Assignments (AS)</h2>
+    <div class="grid">
+      <label>AS1
+        <input type="number" id="as1" value="0" />
+      </label>
+      <label>AS2
+        <input type="number" id="as2" value="0" />
+      </label>
+      <label>AS3
+        <input type="number" id="as3" value="0" />
+      </label>
+    </div>
+
+    <h2>Seatwork (SW)</h2>
+    <div class="grid">
+      <label>SW1
+        <input type="number" id="sw1" value="0" />
+      </label>
+      <label>SW2
+        <input type="number" id="sw2" value="0" />
+      </label>
+      <label>SW3
+        <input type="number" id="sw3" value="0" />
+      </label>
+      <label>SW4
+        <input type="number" id="sw4" value="0" />
+      </label>
+    </div>
+
+    <h2>Plates (PL)</h2>
+    <div class="grid">
+      <label>PL1
+        <input type="number" id="pl1" value="0" />
+      </label>
+      <label>PL2
+        <input type="number" id="pl2" value="0" />
+      </label>
+    </div>
+
+    <h2>Exam</h2>
+    <div class="grid">
+      <label>Points (P)
+        <input type="number" id="points" value="0" />
+      </label>
+    </div>
+
+    <button onclick="calculate()">Calculate Midterm Grade</button>
+
+    <div class="results">
+      <p><strong>Assignment Score (AS):</strong> <span id="asResult">0</span></p>
+      <p><strong>Seatwork Score (SW):</strong> <span id="swResult">0</span></p>
+      <p><strong>Plates Score (PL):</strong> <span id="plResult">0</span></p>
+      <p><strong>Attendance:</strong> 100</p>
+      <p><strong>Class Standing (CS):</strong> <span id="csResult">0</span></p>
+      <p><strong>Exam Score:</strong> <span id="exResult">0</span></p>
+      <p class="final">Midterm Grade: <span id="mtResult">0</span></p>
+    </div>
+  </div>
+
+  <script>
+    function calculate() {
+      // Assignment inputs
+      const AS1 = parseFloat(document.getElementById('as1').value) || 0;
+      const AS2 = parseFloat(document.getElementById('as2').value) || 0;
+      const AS3 = parseFloat(document.getElementById('as3').value) || 0;
+
+      // Seatwork inputs
+      const SW1 = parseFloat(document.getElementById('sw1').value) || 0;
+      const SW2 = parseFloat(document.getElementById('sw2').value) || 0;
+      const SW3 = parseFloat(document.getElementById('sw3').value) || 0;
+      const SW4 = parseFloat(document.getElementById('sw4').value) || 0;
+
+      // Plates inputs
+      const PL1 = parseFloat(document.getElementById('pl1').value) || 0;
+      const PL2 = parseFloat(document.getElementById('pl2').value) || 0;
+
+      // Exam points
+      const P = parseFloat(document.getElementById('points').value) || 0;
+
+      // Attendance
+      const AT = 10;
+
+      // Formulas
+      const AS = ((50) / 3) * (((AS1 / 25) + (AS2 / 60) + (AS3 / 60)) + 3);
+
+      const SW = ((50) / 4) * (((SW1 / 15) + (SW2 / 10) + (SW3 / 15) + (SW4 / 15)) + 4);
+
+      const PL = ((50) / 2) * (((PL1 / 40) + (PL2 / 50)) + 2);
+
+      const CS = (0.4 * AS)  + (0.3 * SW) + (0.2 * PL) + AT;
+
+      const EX = ((P / 50) * 50) + 50;
+
+      const MT = (((3 * CS) + (2 * EX)) / 5);
+
+      // Display results
+      document.getElementById('asResult').textContent = AS.toFixed(2);
+      document.getElementById('swResult').textContent = SW.toFixed(2);
+      document.getElementById('plResult').textContent = PL.toFixed(2);
+      document.getElementById('csResult').textContent = CS.toFixed(2);
+      document.getElementById('exResult').textContent = EX.toFixed(2);
+      document.getElementById('mtResult').textContent = MT.toFixed(2);
+    }
+  </script>
+</body>
+</html>
