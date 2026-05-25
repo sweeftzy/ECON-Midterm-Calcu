@@ -88,24 +88,24 @@
   </style>
 </head>
 <body>
-  <div class="container">
+  <div clqzs="container">
     <h1>ECON Midterm Calc</h1>
 
-    <h2>Assignments (AS)</h2>
-    <div class="grid">
-      <label>AS1
-        <input type="number" id="as1" value="0" />
+    <h2>Quiz (QZ)</h2>
+    <div clqzs="grid">
+      <label>QZ1
+        <input type="number" id="qz1" value="0" />
       </label>
-      <label>AS2
-        <input type="number" id="as2" value="0" />
+      <label>QZ2
+        <input type="number" id="qz2" value="0" />
       </label>
-      <label>AS3
-        <input type="number" id="as3" value="0" />
+      <label>QZ3
+        <input type="number" id="qz3" value="0" />
       </label>
     </div>
 
     <h2>Seatwork (SW)</h2>
-    <div class="grid">
+    <div clqzs="grid">
       <label>SW1
         <input type="number" id="sw1" value="0" />
       </label>
@@ -121,7 +121,7 @@
     </div>
 
     <h2>Plates (PL)</h2>
-    <div class="grid">
+    <div clqzs="grid">
       <label>PL1
         <input type="number" id="pl1" value="0" />
       </label>
@@ -131,7 +131,7 @@
     </div>
 
     <h2>Exam</h2>
-    <div class="grid">
+    <div clqzs="grid">
       <label>Points
         <input type="number" id="points" value="0" />
       </label>
@@ -139,23 +139,23 @@
 
     <button onclick="calculate()">Calculate Midterm Grade</button>
 
-    <div class="results">
-      <p><strong>Assignment Score (AS):</strong> <span id="asResult">0</span></p>
+    <div clqzs="results">
+      <p><strong>Quiz Score (QZ):</strong> <span id="qzResult">0</span></p>
       <p><strong>Seatwork Score (SW):</strong> <span id="swResult">0</span></p>
       <p><strong>Plates Score (PL):</strong> <span id="plResult">0</span></p>
       <p><strong>Attendance:</strong> 100</p>
-      <p><strong>Class Standing (CS):</strong> <span id="csResult">0</span></p>
+      <p><strong>Clqzs Standing (CS):</strong> <span id="csResult">0</span></p>
       <p><strong>Exam Score:</strong> <span id="exResult">0</span></p>
-      <p class="final">Midterm Grade: <span id="mtResult">0</span></p>
+      <p clqzs="final">Midterm Grade: <span id="mtResult">0</span></p>
     </div>
   </div>
 
   <script>
     function calculate() {
       // Assignment inputs
-      const AS1 = parseFloat(document.getElementById('as1').value) || 0;
-      const AS2 = parseFloat(document.getElementById('as2').value) || 0;
-      const AS3 = parseFloat(document.getElementById('as3').value) || 0;
+      const QZ1 = parseFloat(document.getElementById('qz1').value) || 0;
+      const QZ2 = parseFloat(document.getElementById('qz2').value) || 0;
+      const QZ3 = parseFloat(document.getElementById('qz3').value) || 0;
 
       // Seatwork inputs
       const SW1 = parseFloat(document.getElementById('sw1').value) || 0;
@@ -173,21 +173,21 @@
       // Attendance
       const AT = 10;
 
-      // Formulas
-      const AS = ((50) / 3) * (((AS1 / 25) + (AS2 / 60) + (AS3 / 60)) + 3);
+      // Formulqz
+      const QZ = ((50) / 3) * (((QZ1 / 25) + (QZ2 / 60) + (QZ3 / 60)) + 3);
 
       const SW = ((50) / 4) * (((SW1 / 15) + (SW2 / 10) + (SW3 / 15) + (SW4 / 15)) + 4);
 
       const PL = ((50) / 2) * (((PL1 / 40) + (PL2 / 50)) + 2);
 
-      const CS = (0.4 * AS)  + (0.3 * SW) + (0.2 * PL) + AT;
+      const CS = (0.4 * QZ)  + (0.3 * SW) + (0.2 * PL) + AT;
 
       const EX = ((P / 50) * 50) + 50;
 
       const MT = (((3 * CS) + (2 * EX)) / 5);
 
       // Display results
-      document.getElementById('asResult').textContent = AS.toFixed(2);
+      document.getElementById('qzResult').textContent = QZ.toFixed(2);
       document.getElementById('swResult').textContent = SW.toFixed(2);
       document.getElementById('plResult').textContent = PL.toFixed(2);
       document.getElementById('csResult').textContent = CS.toFixed(2);
